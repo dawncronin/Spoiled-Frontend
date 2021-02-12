@@ -91,6 +91,23 @@ export function getCurrentUser() {
     }
 }
 
+export function setUserGifts(user_id) {
+    return (dispatch) => {
+        dispatch({type: 'LOADING_USER'})
+        fetch(`${API_ROOT}gifts/:${user_id}`, {
+            mode: 'cors',
+            headers,
+        })
+        .then(res => res.json())
+        .then(gifts => {
+            dispatch({
+                type: 'SET_USER_GIFTS',
+                payload: gifts
+            })
+        })
+    }
+}
+
 export const removeError = () => {
     return (dispatch) => {
             dispatch({

@@ -4,7 +4,8 @@ const INITIAL_STATE = {
     currentUser: null,
     loadingUser: false,
     error: false,
-    loggedIn: false
+    loggedIn: false,
+    userGift: []
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -32,6 +33,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 error: false
+            }
+        case 'SET_USER_GIFTS':
+            return {
+                ...state,
+                userGifts: action.payload
             }
         case 'LOGOUT':
             return {
