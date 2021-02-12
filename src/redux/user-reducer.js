@@ -1,7 +1,10 @@
 
 
 const INITIAL_STATE = {
-    currentUser: null
+    currentUser: null,
+    loadingUser: false,
+    error: false,
+    loggedIn: false
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -9,15 +12,35 @@ const userReducer = (state = INITIAL_STATE, action) => {
         case 'SET_CURRENT_USER':
             return {
                 ...state,
-                currentUser: action.payload
+                loadingUser: false,
+                currentUser: action.payload,
+                loggedIn: true
             }
-        case 'CREATE_USER':
+        case 'LOADING_USER':
             return {
                 ...state,
-                currentUser: action.payload
+                loadingUser: true,
             }
-            default:
-                return state;
+        case 'INVALID_LOGIN':
+            return {
+                ...state,
+                error: true,
+                loadingUser: false,
+                loggedIn: false
+            }
+        case 'REMOVE_ERROR':
+            return {
+                ...state,
+                error: false
+            }
+        case 'LOGOUT':
+            return {
+                ...state,
+                currentUser: null,
+                loggedIn: false
+            }
+        default:
+            return state;
     }
 }
 

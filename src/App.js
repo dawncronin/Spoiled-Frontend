@@ -3,27 +3,43 @@ import React from 'react'
 import { 
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import Home from './pages/home-page'
 import Products from './pages/products-page'
 import Users from './pages/users-page'
 import UserPage from './pages/user-page'
 import SignIn from './pages/sign-in-page'
+import NavBar from './components/nav-bar'
+
+import { getCurrentUser } from './redux/user-actions'
 
 
 import './App.css';
 
-function App() {
+class App extends React.Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+
+    }
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem('token');
+    if (token) {
+     this.props.getCurrentUser()
+    }
+  }
+  
+render() {
   return (
     <Router>
     <div className="App">
-      <header className="App-header">
-        <p>
-          Spoiled Meow
-        </p>
-      </header>
+      <NavBar/>
 
       <Switch>
         <Route exact path="/">
@@ -44,7 +60,18 @@ function App() {
       </Switch>
     </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  getCurrentUser: () => dispatch(getCurrentUser())
+})
+
+const mapStateToProps = (state) => ({
+  currentUser: state.userReducer.currentUser,
+  loggedIn: state.userReducer.loggedIn
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
