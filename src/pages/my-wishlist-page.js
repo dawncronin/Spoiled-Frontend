@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-
 
 import { setUserGifts } from '../redux/user-actions'
 import MyGiftCard from '../components/my-gift-card'

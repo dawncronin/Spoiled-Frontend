@@ -42,7 +42,7 @@ class UserPage extends React.Component {
                     {this.state.user.first_name}'s page
 
                     {this.state.wishlist.map(gift => {
-                        return <GiftCard key= {gift._id} gift_id={gift._id} product_id={gift.product_id}/>
+                        return <GiftCard key= {gift._id} purchased={ gift.purchased} gift_id={gift._id} product_id={gift.product_id}/>
                     })}
                 </div>
             }

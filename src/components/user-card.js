@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import CustomButton from './custom-button'
 import { setUserGifts } from '../redux/user-actions'
 
 

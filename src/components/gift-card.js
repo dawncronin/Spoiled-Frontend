@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import CustomButton from './custom-button'
 import { setUserGifts } from '../redux/user-actions'
 
 const API_ROOT = 'http://localhost:3001/'
@@ -54,6 +53,7 @@ class GiftCard extends React.Component {
     render() {
         return (
             <div>
+                <h2> {this.props.purchased ? "PURCHASED" : null }</h2>
                 <h3>{this.state.product.name}</h3>
                 <p>${this.state.product.price}0</p>
                 <p>{this.state.product.description}</p>
