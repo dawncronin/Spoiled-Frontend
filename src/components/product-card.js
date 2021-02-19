@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 
 import CustomButton from './custom-button'
+import { setUserGifts } from '../redux/user-actions'
 
 const API_ROOT = 'http://localhost:3001/'
 
@@ -18,7 +19,6 @@ class ProductCard extends React.Component {
     }
 
     handleLoggedInClick = () => {
-        console.log(this.props.currentUser._id)
         fetch(`${API_ROOT}gifts`, {
             method: 'POST',
             mode: 'cors',
@@ -29,8 +29,9 @@ class ProductCard extends React.Component {
             },
             body: JSON.stringify({user_id: this.props.currentUser._id,
             product_id: this.props.product._id})  
-        }).then(res => console.log(res))
-
+        }).then( () => {
+            this.props.setUserGifts(this.props.currentUser._id)
+        })
     }
 
     handleLoggedOutClick = () => {
@@ -38,12 +39,18 @@ class ProductCard extends React.Component {
     }
 
     render() {
+        let added = false
+        if (this.props.loggedIn && this.props.gifts) {
+            added = this.props.gifts.find(gift => gift.product_id === this.props.product._id)
+        }
+
         return (
-            <div key={`${this.props.product._id}`}>
+            <div className={`product-card ${added? 'added' : ''}`} key={`${this.props.product._id}`}>
                 <h3>{this.props.product.name}</h3>
                 <p>${this.props.product.price}0</p>
                 <p>{this.props.product.description}</p>
                 <img src={this.props.product.image} alt="product"/>
+                {added? 'added' : ''}
                 {this.props.loggedIn? 
                     <CustomButton text="Add to wishlist" handleClick={this.handleLoggedInClick}/> :
                     <CustomButton text="Sign in to add to wishlist" handleClick={this.handleLoggedOutClick} />
@@ -57,8 +64,13 @@ class ProductCard extends React.Component {
 
 const mapStateToProps = (state) => ({
     loggedIn: state.userReducer.loggedIn,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    userGifts: state.userReducer.userGifts
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setUserGifts: user_id => dispatch(setUserGifts(user_id))
 })
 
 
-export default connect(mapStateToProps)(ProductCard)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductCard)

@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     loadingUser: false,
     error: false,
     loggedIn: false,
-    userGift: []
+    userGifts: []
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {

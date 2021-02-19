@@ -21,10 +21,15 @@ const NavBar = (props) => {
                     <NavLink to="/users">People</NavLink>
                 </li>
 
-                {props.loggedIn ?                
+                {props.loggedIn ?
+                <div>   
+                    <li>
+                        <NavLink to="/myWishlist">My Wishlist</NavLink>
+                    </li>              
                     <li>
                         <NavLink to="/" onClick={props.logout}>Logout</NavLink>
                     </li> 
+                </div>
                     :
                     <li>
                         <NavLink to="/signin">Sign In</NavLink>

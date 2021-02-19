@@ -1,7 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import ProductCard from './product-card'
 import CustomButton from './custom-button'
+import { setUserGifts } from '../redux/user-actions'
 
 
 const API_ROOT = 'http://localhost:3001/'
@@ -22,7 +24,6 @@ class ProductList extends React.Component{
         }
     }
 
-
     componentDidMount(){
         fetch(`${API_ROOT}products?page=${this.state.page}`, {
             method: 'get',
@@ -30,8 +31,10 @@ class ProductList extends React.Component{
             headers: this.state.headers
         }).then(res => res.json())
         .then(json => {
-            console.log(json)
             this.setState({products: json})
+            if (this.props.loggedIn) {
+                this.props.setUserGifts(this.props.currentUser._id)
+            }
         })
     }
 
@@ -54,7 +57,11 @@ class ProductList extends React.Component{
         return (
             <div className="ProductListPage">
             <div>
-                {this.state.products.map( (product) => <ProductCard product={product}/> )}
+                {this.state.products.map( (product) => <ProductCard 
+                    key={product._id} 
+                    product={product} 
+                    gifts={this.props.userGifts}/> 
+                )}
             </div>
 
             <CustomButton text="Next Page" handleClick={this.handleOnClick}/>
@@ -64,5 +71,13 @@ class ProductList extends React.Component{
     }
 
 }
+const mapDispatchToProps = (dispatch) => ({
+    setUserGifts: user_id => dispatch(setUserGifts(user_id))
+})
 
-export default ProductList
+const mapStateToProps = (state) => ({
+    loggedIn: state.userReducer.loggedIn,
+    currentUser: state.userReducer.currentUser,
+    userGifts: state.userReducer.userGifts
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList)

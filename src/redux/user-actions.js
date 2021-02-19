@@ -69,7 +69,6 @@ export function getCurrentUser() {
             mode: 'cors',
             headers,
         }).then(res => {
-            console.log(res.status)
             if (res.status === 201) {
                 return res.json()
             } else {
@@ -80,6 +79,20 @@ export function getCurrentUser() {
             dispatch({
                 type: 'SET_CURRENT_USER',
                 payload: user
+            })
+            return user
+        })
+        .then( user => {
+            fetch(`${API_ROOT}gifts/user/${user._id}`, {
+                mode: 'cors',
+                headers,
+            })
+            .then(res => res.json())
+            .then(gifts => {
+                dispatch({
+                    type: 'SET_USER_GIFTS',
+                    payload: gifts
+                })
             })
         })
         .catch (error =>{
@@ -93,8 +106,9 @@ export function getCurrentUser() {
 
 export function setUserGifts(user_id) {
     return (dispatch) => {
+        console.log('setting user gifts')
         dispatch({type: 'LOADING_USER'})
-        fetch(`${API_ROOT}gifts/:${user_id}`, {
+        fetch(`${API_ROOT}gifts/user/${user_id}`, {
             mode: 'cors',
             headers,
         })

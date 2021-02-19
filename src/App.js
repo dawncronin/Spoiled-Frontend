@@ -13,6 +13,8 @@ import Users from './pages/users-page'
 import UserPage from './pages/user-page'
 import SignIn from './pages/sign-in-page'
 import NavBar from './components/nav-bar'
+import MyWishlist from './pages/my-wishlist-page'
+import PurchasePage from './pages/purchase-page'
 
 import { getCurrentUser } from './redux/user-actions'
 
@@ -51,11 +53,15 @@ render() {
         <Route path="/signin">
           <SignIn />
         </Route>
-        <Route path={`/users/:userId`}>
-                <UserPage />
+        <Route path={`/users/:userId`} component={UserPage}>
             </Route>
+        <Route path={`/purchase/:giftId`} component={PurchasePage}>
+        </Route>
         <Router path="/users">
           <Users />
+        </Router>
+        <Router path="/myWishlist">
+          <MyWishlist />
         </Router>
       </Switch>
     </div>
