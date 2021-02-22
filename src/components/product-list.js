@@ -5,10 +5,9 @@ import ProductCard from './product-card'
 import CustomButton from './custom-button'
 import { setUserGifts } from '../redux/user-actions'
 
+import './product-list.styles.css'
 
 const API_ROOT = 'http://localhost:3001/'
-
-
 
 class ProductList extends React.Component{
     constructor(props){
@@ -55,8 +54,8 @@ class ProductList extends React.Component{
 
     render() {
         return (
-            <div className="ProductListPage">
-            <div>
+            <div >
+            <div className="product-list">
                 {this.state.products.map( (product) => <ProductCard 
                     key={product._id} 
                     product={product} 

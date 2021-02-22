@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+.spoiled {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    font-size: 45pt;
+    color: rgb(212, 119, 134);
+}
+
+.nav-bar ul {
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 0;
+}
+.nav-bar p {
+    margin: 0;
+    padding-right: 20px;
+}
+
+.nav-bar li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+.nav-bar ul div {
+    display: inline-block;
+}

@@ -6,6 +6,8 @@ import { Redirect } from 'react-router-dom'
 import CustomButton from './custom-button'
 import { setUserGifts } from '../redux/user-actions'
 
+import './product-card.styles.css'
+
 const API_ROOT = 'http://localhost:3001/'
 
 
@@ -46,10 +48,10 @@ class ProductCard extends React.Component {
 
         return (
             <div className={`product-card ${added? 'added' : ''}`} key={`${this.props.product._id}`}>
+                <img className='product-card-img' src={this.props.product.image} alt="product"/>
                 <h3>{this.props.product.name}</h3>
-                <p>${this.props.product.price}0</p>
-                <p>{this.props.product.description}</p>
-                <img src={this.props.product.image} alt="product"/>
+                <p className="product-card-price">${this.props.product.price}0</p>
+                <p className="product-card-desc">{this.props.product.description}</p>
                 {added? 'added' : ''}
                 {this.props.loggedIn? 
                     <CustomButton text="Add to wishlist" handleClick={this.handleLoggedInClick}/> :

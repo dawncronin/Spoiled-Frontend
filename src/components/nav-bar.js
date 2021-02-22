@@ -4,15 +4,15 @@ import { NavLink } from 'react-router-dom'
 
 import { logout } from '../redux/user-actions'
 
-
+import "./nav-bar.styles.css"
 
 const NavBar = (props) => {
     return (
         <nav>
         <div className='nav-bar'>
             <ul>
-                <li>
-                    <NavLink to="/">Spoiled</NavLink>
+                <li >
+                    <NavLink to="/"><p className="spoiled">Spoiled</p></NavLink>
                 </li>
                 <li>
                     <NavLink to="/products">Products</NavLink>

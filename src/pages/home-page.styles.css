@@ -1,0 +1,16 @@
+.home-page {
+    background-image: url('../img/pink-1311251.jpg');
+    height: 90vh;
+    overflow-y: hidden;
+}
+
+.home-page h3 {
+    margin: 0 auto;
+    padding: 30vh 20px 20px 20px;
+    text-align: center;
+    font-weight: 200;
+    font-size: 50px;
+    max-width: 80%;
+    color: rgb(212, 119, 134);
+
+}
