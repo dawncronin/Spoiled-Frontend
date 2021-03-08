@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
+.nav-bar {
+    background-color: white;
+    box-shadow: 2px 1px 2px rgb(214, 214, 214);
+}
 .spoiled {
     font-family: 'Dancing Script', cursive;
     font-weight: 600;

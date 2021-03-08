@@ -1,0 +1,19 @@
+.btn:visited, .btn {
+    border: none;
+    background-color: pink;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 80px;
+    transition: background-color .2s, transform .2s;
+
+}
+
+.btn:hover, .btn:active {
+    background-color: rgb(212, 119, 134);
+    transform: scale(1.03);
+}
+
+.sign-in-to-add-to-wishlist {
+    width: 60%;
+}

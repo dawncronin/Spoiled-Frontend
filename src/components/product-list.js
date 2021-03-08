@@ -10,7 +10,7 @@ import './product-list.styles.css'
 const API_ROOT = 'http://localhost:3001/'
 
 class ProductList extends React.Component{
-    constructor(props){
+    constructor(){
         super()
 
         this.state = {
@@ -54,8 +54,9 @@ class ProductList extends React.Component{
 
     render() {
         return (
-            <div >
+            <div>
             <div className="product-list">
+                <div> SORT | FILTER </div>
                 {this.state.products.map( (product) => <ProductCard 
                     key={product._id} 
                     product={product} 

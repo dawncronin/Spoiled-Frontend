@@ -6,6 +6,7 @@ import FormInput from './form-input'
 import CustomButton from './custom-button'
 import { createUser, removeError } from '../redux/user-actions'
 
+//styles are located in parent sign-in-page
 
 class SignUpForm extends React.Component {
     constructor(){
@@ -41,19 +42,22 @@ class SignUpForm extends React.Component {
             last_name: '',
             email: '',
             password:'',
+            confirm_password: ''
         })
     }
 
     render() {
         return (
-            <div>
-                <h3>Sign Up Here</h3>
-                <p>{this.props.error? 'Invalid Inputs' : null}</p>
+            <div className="sign-up">
+                <h3>Sign Up</h3>
+                <h5>Create an account to start a wishlist</h5>
+                <p className="invalid">{this.props.error? 'Invalid Inputs' : null}</p>
                 <form>
-                    <FormInput label='first name' value={this.state.first_name} type='text' name='first_name' handleChange={this.handleChange}/>
-                    <FormInput label='last name' value={this.state.last_name} type='text' name='last_name' handleChange={this.handleChange}/>
-                    <FormInput label='email' value={this.state.email} type='email' name='email' handleChange={this.handleChange}/>
-                    <FormInput label='password' value={this.state.password} type='password' name='password' handleChange={this.handleChange}/>
+                    <FormInput placeholder='First Name' value={this.state.first_name} type='text' name='first_name' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Last Name' value={this.state.last_name} type='text' name='last_name' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Email' value={this.state.email} type='email' name='email' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Password' value={this.state.password} type='password' name='password' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Confirm Password' value={this.state.password} type='password' name='confirm-password' handleChange={this.handleChange}/>
                     <CustomButton text='Sign Up' handleClick={this.handleClick}/>
                 </form>
 

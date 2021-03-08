@@ -6,7 +6,7 @@ import FormInput from './form-input'
 import CustomButton from './custom-button'
 import { setCurrentUser } from '../redux/user-actions'
 
-
+//styles are located in parent sign-in-page
 
 class SignInForm extends React.Component {
     constructor(){
@@ -34,12 +34,12 @@ class SignInForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="sign-in">
                 <h3>Sign In</h3>
-                <p>{this.props.error? 'Invalid Inputs' : null}</p>
+                <p className="invalid">{this.props.error? 'Invalid Inputs' : null}</p>
                 <form>
-                    <FormInput label='email' type='email' value={`${this.state.email}`} name='email' handleChange={this.handleChange}/>
-                    <FormInput label='password' type='password' value={`${this.state.password}`} name='password' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Email' type='email' value={`${this.state.email}`} name='email' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Password' type='password' value={`${this.state.password}`} name='password' handleChange={this.handleChange}/>
                     <CustomButton text='Sign In' handleClick={this.handleClick}/>
                 </form>
                 {this.props.user? <Redirect to="/"/> : null}
