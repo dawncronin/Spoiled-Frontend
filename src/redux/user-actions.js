@@ -24,6 +24,7 @@ export const createUser = (user) => {
         })
         .then(json => {
             localStorage.setItem('token', json['token'])
+            localStorage.setItem('user', json['user'])
             dispatch({
                 type: 'SET_CURRENT_USER',
                 payload: json['user']
@@ -49,6 +50,7 @@ export const setCurrentUser = user => {
         .then(json => {
             console.log(json)
             localStorage.setItem('token', json['token'])
+            localStorage.setItem('user', JSON.stringify(json['user']))
             dispatch({
                 type: 'SET_CURRENT_USER',
                 payload: json['user']

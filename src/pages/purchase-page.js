@@ -18,12 +18,14 @@ class PurchasePage extends React.Component {
 
     componentDidMount () {
         fetch(`${API_ROOT}gifts/${this.props.match.params.giftId}`, {
-            method: 'get',
+            method: 'put',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 Accepts: 'application/json',
-            }
+            },
+            body: JSON.stringify({purchased: true})
+
         }).then(res => res.json())
         .then( json => {
             this.setState({ product: json.product,
@@ -34,13 +36,13 @@ class PurchasePage extends React.Component {
     onToken = token => {
         console.log(token);
         fetch(`${API_ROOT}gifts/${this.props.match.params.giftId}`, {
-            method: 'patch',
+            method: 'post',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 Accepts: 'application/json',
-                body: JSON.stringify({purchased: true})
-            }
+            },
+            body: JSON.stringify({purchased: true})
         })
         alert('Payment Successful')
 

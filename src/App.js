@@ -33,6 +33,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user')
     if (token) {
      this.props.getCurrentUser()
     }

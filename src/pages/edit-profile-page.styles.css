@@ -1,0 +1,19 @@
+.edit-profile {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.edit-form {
+    text-align: left;
+}
+
+.edit-form input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn-div {
+    text-align: center;
+}
+
