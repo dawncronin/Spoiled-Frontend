@@ -15,19 +15,19 @@ const NavBar = (props) => {
                     <NavLink to="/"><p className="spoiled">Spoiled</p></NavLink>
                 </li>
                 <li>
-                    <NavLink to="/products">Products</NavLink>
+                    <NavLink to="/products" >Products</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/users">People</NavLink>
+                    <NavLink to="/users" >People</NavLink>
                 </li>
 
                 {props.loggedIn ?
                 <div>   
                     <li>
-                        <NavLink to="/myWishlist">My Wishlist</NavLink>
+                        <NavLink to="/myWishlist" >My Wishlist</NavLink>
                     </li>              
                     <li>
-                        <NavLink to="/" onClick={props.logout}>Logout</NavLink>
+                        <NavLink to="/" onClick={props.logout} className="logout">Logout</NavLink>
                     </li> 
                 </div>
                     :

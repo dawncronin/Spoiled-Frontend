@@ -1,0 +1,30 @@
+.about {
+    margin: 10px;
+    width: 30%;
+    max-width: 400px;
+    background-color: white;
+    padding: 10px;
+    float: left;
+
+}
+
+.my-wishlist {
+    width: 60%;
+    float: right;
+    margin: 0;
+}
+
+.profile-picture {
+    width: 100%;
+}
+
+.edit {
+    width: 18px;
+    padding-left: 10px;
+    transition: transform .2s;
+}
+
+.edit:hover, .edit:active {
+    transform: scale(1.25);
+    cursor: pointer;
+}

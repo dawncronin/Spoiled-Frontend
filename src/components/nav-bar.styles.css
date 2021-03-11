@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 
 .nav-bar {
+    position: relative;
     background-color: white;
-    box-shadow: 2px 1px 2px rgb(214, 214, 214);
+    box-shadow: 1px 1px 2px rgb(202, 202, 202);
+    z-index: 100;
 }
 .spoiled {
     font-family: 'Dancing Script', cursive;
@@ -27,6 +29,29 @@
     padding: 10px;
 }
 
+.nav-bar a{
+    color: pink;
+    border-bottom: 1px solid white;
+    transition: color .2s, border-bottom .2s;
+}
+
+.nav-bar a:active, .nav-bar a:hover{
+    color: rgb(212, 119, 134);
+    border-bottom: 1px solid rgb(212, 119, 134);
+}
+
 .nav-bar ul div {
     display: inline-block;
+}
+
+a.active {
+    border-bottom: 1px solid rgb(212, 119, 134);
+}
+
+a.active.logout {
+    border-bottom: 1px solid white;
+}
+
+a.active.logout:active, a.active.logout:hover {
+    border-bottom: 1px solid rgb(212, 119, 134);
 }

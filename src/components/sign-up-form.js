@@ -57,7 +57,7 @@ class SignUpForm extends React.Component {
                     <FormInput placeholder='Last Name' value={this.state.last_name} type='text' name='last_name' handleChange={this.handleChange}/>
                     <FormInput placeholder='Email' value={this.state.email} type='email' name='email' handleChange={this.handleChange}/>
                     <FormInput placeholder='Password' value={this.state.password} type='password' name='password' handleChange={this.handleChange}/>
-                    <FormInput placeholder='Confirm Password' value={this.state.password} type='password' name='confirm-password' handleChange={this.handleChange}/>
+                    <FormInput placeholder='Confirm Password' value={this.state.confirm_password} type='password' name='confirm-password' handleChange={this.handleChange}/>
                     <CustomButton text='Sign Up' handleClick={this.handleClick}/>
                 </form>
 

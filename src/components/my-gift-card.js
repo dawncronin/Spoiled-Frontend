@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import CustomButton from './custom-button'
 import { setUserGifts } from '../redux/user-actions'
 
+import './my-gift-card.styles.css'
+
 const API_ROOT = 'http://localhost:3001/'
 
 class MyGiftCard extends React.Component {
@@ -64,13 +66,12 @@ class MyGiftCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="my-gift-card">
+                <img src={this.state.product.image} alt="product"/>
                 <h3>{this.state.product.name}</h3>
                 <p>${this.state.product.price}0</p>
                 <p>{this.state.product.description}</p>
-                <img src={this.state.product.image} alt="product"/>
-
-                <CustomButton handleClick={this.removeFromWishlist}
+                <CustomButton class="remove-from-wishlist" handleClick={this.removeFromWishlist}
                 text='Remove From Wishlist' /> 
             </div>
         )

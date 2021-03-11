@@ -3,3 +3,23 @@
     margin: auto;
     text-align: center;
 }
+
+.product-page-footer {
+    text-align: center;
+}
+
+.page {
+    font-size: 13px;
+    text-align: center;
+}
+
+
+.custom-select select {
+    margin: 10px;
+    border: 1px solid rgb(255, 238, 241);
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+

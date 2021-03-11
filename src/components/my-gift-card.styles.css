@@ -1,0 +1,9 @@
+.my-gift-card {
+    width: 90%;
+    margin: auto;
+}
+
+.my-gift-card img {
+    width: 60%;
+    display: block;
+}

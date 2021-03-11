@@ -37,8 +37,7 @@ class ProductList extends React.Component{
         })
     }
 
-    handleOnClick = () => {
-        console.log('click')
+    handlePageIncrease = () => {
         fetch(`${API_ROOT}products?page=${this.state.page + 1}`, {
             method: 'get',
             mode: 'cors',
@@ -51,20 +50,57 @@ class ProductList extends React.Component{
         window.scrollTo(0, 0)
     }
 
+    handlePageDecrease = () => {
+        fetch(`${API_ROOT}products?page=${this.state.page - 1}`, {
+            method: 'get',
+            mode: 'cors',
+            headers: this.state.headers
+        }).then(res => res.json())
+        .then( json => this.setState({products: json}))
+        this.setState((state, props) => {
+            return { ...state, page: state.page + 1}
+        })
+        window.scrollTo(0, 0)
+    }
+
+    sortProducts = (e) => {
+        fetch(`${API_ROOT}products?sort=${e.target.value}`, {
+            method: 'get',
+            mode: 'cors',
+            headers: this.state.headers
+        }).then(res => res.json())
+        .then( json => this.setState({products: json}))
+    }
+
 
     render() {
         return (
             <div>
             <div className="product-list">
-                <div> SORT | FILTER </div>
+                <div className="custom-select">
+                    <select onChange={this.sortProducts}>
+                        <option selected disabled hidden> Sort </option>
+                        <option value="low"> Low Price</option>
+                        <option value="high">High Price</option>
+                        <option value="alphabet"> A to Z </option>
+                    </select>
+                </div>
+
                 {this.state.products.map( (product) => <ProductCard 
                     key={product._id} 
                     product={product} 
                     gifts={this.props.userGifts}/> 
                 )}
             </div>
-
-            <CustomButton text="Next Page" handleClick={this.handleOnClick}/>
+            {!this.state.products.length? null :
+            <div className="product-page-footer">
+                <div className='page'> Page {this.state.page} </div>
+                {this.state.page <= 1? null:
+                    <CustomButton text="Prev Page" handleClick={this.handlePageDecrease}/>
+                }
+                <CustomButton text="Next Page" handleClick={this.handlePageIncrease}/>
+            </div>
+            }
             </div>
 
         )

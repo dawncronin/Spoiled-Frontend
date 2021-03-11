@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { setUserGifts } from '../redux/user-actions'
 
+import './user-card.styles.css'
 
 class UserCard extends React.Component {
     constructor() {
@@ -15,7 +16,7 @@ class UserCard extends React.Component {
     render() {
         let { first_name, last_name, _id } = this.props.user
         return (
-            <div>
+            <div className="user-card">
                 <h3>{first_name} {last_name}</h3>
 
                 <a href={`/users/${_id}`}>View Wishlist</a>

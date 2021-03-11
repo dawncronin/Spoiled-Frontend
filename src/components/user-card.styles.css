@@ -1,0 +1,20 @@
+.user-card {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+
+.user-card a{
+    color: pink;
+    border-bottom: 1px solid white;
+    transition: color .2s, border-bottom .2s;
+}
+
+.user-card a:active, .user-card a:hover{
+    color: rgb(212, 119, 134);
+    border-bottom: 1px solid rgb(212, 119, 134);
+}

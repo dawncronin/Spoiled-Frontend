@@ -15,6 +15,7 @@ import SignIn from './pages/sign-in-page'
 import NavBar from './components/nav-bar'
 import MyWishlist from './pages/my-wishlist-page'
 import PurchasePage from './pages/purchase-page'
+import EditProfile from './pages/edit-profile-page'
 
 import { getCurrentUser } from './redux/user-actions'
 
@@ -60,9 +61,13 @@ render() {
         <Router path="/users">
           <Users />
         </Router>
+        <Router path="/myWishlist/edit">
+          <EditProfile />
+        </Router>
         <Router path="/myWishlist">
           <MyWishlist />
         </Router>
+
       </Switch>
     </div>
     </Router>
