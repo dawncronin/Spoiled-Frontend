@@ -3,7 +3,7 @@ import React from 'react'
 import CustomButton from './custom-button'
 import FormInput from './form-input'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class CheckoutForm extends React.Component {
     constructor() {

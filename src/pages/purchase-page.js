@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 import StripeCheckoutButton from '../components/stripe-button'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class PurchasePage extends React.Component {
     constructor() {
@@ -18,14 +18,12 @@ class PurchasePage extends React.Component {
 
     componentDidMount () {
         fetch(`${API_ROOT}gifts/${this.props.match.params.giftId}`, {
-            method: 'put',
+            method: 'get',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
                 Accepts: 'application/json',
-            },
-            body: JSON.stringify({purchased: true})
-
+            }
         }).then(res => res.json())
         .then( json => {
             this.setState({ product: json.product,
@@ -34,9 +32,8 @@ class PurchasePage extends React.Component {
     }
 
     onToken = token => {
-        console.log(token);
         fetch(`${API_ROOT}gifts/${this.props.match.params.giftId}`, {
-            method: 'post',
+            method: 'put',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,6 +56,8 @@ class PurchasePage extends React.Component {
                 <img src={this.state.product.image} alt="purchase"/>
 
                 <p> Total: ${this.state.product.price}0</p>
+
+                <p>Use card number 4242 4242 4242 4242 and date 10/2022</p>
                 <StripeCheckoutButton price={this.state.product.price} onToken={this.onToken}/>
             </div>
         )

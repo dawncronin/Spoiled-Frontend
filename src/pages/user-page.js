@@ -2,7 +2,7 @@ import React from 'react'
 
 import GiftCard from '../components/gift-card'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class UserPage extends React.Component {
     constructor() {
@@ -24,7 +24,6 @@ class UserPage extends React.Component {
             }
         }).then(res => res.json())
         .then( json => {
-            console.log(json)
             this.setState({ user: json.user,
             wishlist: json.gifts})
         })

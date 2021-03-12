@@ -7,7 +7,7 @@ import { setUserGifts } from '../redux/user-actions'
 
 import './product-list.styles.css'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class ProductList extends React.Component{
     constructor(){
@@ -42,7 +42,7 @@ class ProductList extends React.Component{
             method: 'get',
             mode: 'cors',
             headers: this.state.headers
-        }).then(res => res.json())
+        }).then(res =>  res.json())
         .then( json => this.setState({products: json}))
         this.setState((state, props) => {
             return { ...state, page: state.page + 1}

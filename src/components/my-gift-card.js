@@ -6,7 +6,7 @@ import { setUserGifts } from '../redux/user-actions'
 
 import './my-gift-card.styles.css'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class MyGiftCard extends React.Component {
     constructor() {
@@ -32,7 +32,6 @@ class MyGiftCard extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log(this.props.product_id, this.state.product._id)
         if (this.props.product_id !== this.state.product._id) {
             fetch(`${API_ROOT}products/${this.props.product_id}`, {
                 method: 'get',
@@ -43,7 +42,6 @@ class MyGiftCard extends React.Component {
                 }
             }).then(res => res.json())
             .then( json => {
-                console.log(json, 'json')
                 this.setState({ product: json})
             })
         }
@@ -71,8 +69,12 @@ class MyGiftCard extends React.Component {
                 <h3>{this.state.product.name}</h3>
                 <p>${this.state.product.price}0</p>
                 <p>{this.state.product.description}</p>
+                {this.props.purchased? 
+                <p> This gift has been purchased!</p> :
                 <CustomButton class="remove-from-wishlist" handleClick={this.removeFromWishlist}
                 text='Remove From Wishlist' /> 
+            }
+
             </div>
         )
     }

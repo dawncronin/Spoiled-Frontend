@@ -1,7 +1,7 @@
 import React from 'react' 
 
 import UserCard from '../components/user-card'
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class UsersPage extends React.Component {
     constructor() {
@@ -22,7 +22,6 @@ class UsersPage extends React.Component {
             }
         }).then(res => res.json())
         .then( json => {
-            console.log(json)
             this.setState({ users: json.users})
         })
     }

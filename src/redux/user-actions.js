@@ -1,4 +1,4 @@
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 let token = localStorage.getItem("token")
 
@@ -48,7 +48,6 @@ export const setCurrentUser = user => {
             body: JSON.stringify(user)
         }).then(res => res.json())
         .then(json => {
-            console.log(json)
             localStorage.setItem('token', json['token'])
             localStorage.setItem('user', JSON.stringify(json['user']))
             dispatch({
@@ -108,7 +107,6 @@ export function getCurrentUser() {
 
 export function setUserGifts(user_id) {
     return (dispatch) => {
-        console.log('setting user gifts')
         dispatch({type: 'LOADING_USER'})
         fetch(`${API_ROOT}gifts/user/${user_id}`, {
             mode: 'cors',
@@ -135,7 +133,6 @@ export const removeError = () => {
 
 export const logout = () => {
     return (dispatch) => {
-        console.log('logout')
         fetch(`${API_ROOT}users/logout`, {
             mode: 'cors',
             method: 'post',

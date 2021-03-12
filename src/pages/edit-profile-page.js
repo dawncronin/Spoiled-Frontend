@@ -8,10 +8,8 @@ import CustomButton from '../components/custom-button'
 
 import './edit-profile-page.styles.css'
 
-const API_ROOT = 'http://localhost:3001/'
-
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 let token = localStorage.getItem("token")
-
 const headers = {
     'Content-Type': 'application/json',
     Accepts: 'application/json',
@@ -45,9 +43,10 @@ class EditProfile extends React.Component {
             last_name: this.state.last_name,
             email: this.state.email,
             old_password: this.state.old_password,
-            old_email: this.state.old_email
-
+            old_email: this.state.old_email,
+            updated: false
         }
+
         if (this.state.new_password !== '') {
             updates.password = this.state.new_password
         }
@@ -59,16 +58,17 @@ class EditProfile extends React.Component {
             body: JSON.stringify(updates)
         }).then(res => res.json())
         .then (res => {
-            console.log(res)
             let password = updates.old_password
+
             if ( updates.password ){
                 password = updates.password
             }
 
+            this.setState({updated: true})
+            this.setState({old_password: ''})
+            this.setState({new_password: ''})
             this.props.setCurrentUser({email: res.email, password })
         })
-
-    
     }
 
     render() {
@@ -77,6 +77,8 @@ class EditProfile extends React.Component {
                 {!this.props.currentUser? null :
                 <div className="edit-profile">
                     <h3> Editing Your Profile </h3>
+                    {this.state.updated? 
+                    <h4>Profile Updated!</h4> : ""}
                     <form className="edit-form">
                         <FormInput label="First Name" placeholder={this.props.currentUser.first_name} value={this.state.first_name} type='text' name='first_name' handleChange={this.handleChange}/>
                         <FormInput label="Last Name" placeholder={this.props.currentUser.last_name} value={this.state.last_name} type='text' name='last_name' handleChange={this.handleChange}/>

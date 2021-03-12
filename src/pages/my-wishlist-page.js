@@ -28,7 +28,7 @@ class MyWishListPage extends React.Component {
             <div>
                 {!this.props.currentUser? null :
                 <div className="about">
-                    <h3> Viewing Your Profile <a href="/myWishlist/edit"><img className="edit" src={edit}/></a></h3>
+                    <h3> Viewing Your Profile <a href="/myWishlist/edit"><img className="edit" src={edit} alt="edit icon"/></a></h3>
                     <h2>{this.props.currentUser.first_name} {this.props.currentUser.last_name}</h2>
                     <h4> {this.props.currentUser.email} </h4>
                     <img className="profile-picture" src="https://research.cbc.osu.edu/sokolov.8/wp-content/uploads/2017/12/profile-icon-png-898.png" alt="profile"/>
@@ -40,6 +40,7 @@ class MyWishListPage extends React.Component {
                         key={gift._id} 
                         product_id={gift.product_id}
                         gift_id={gift._id}
+                        purchased={gift.purchased}
                         />
                     })}
                 </div>

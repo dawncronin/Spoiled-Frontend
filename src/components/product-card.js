@@ -8,7 +8,7 @@ import { setUserGifts } from '../redux/user-actions'
 
 import './product-card.styles.css'
 
-const API_ROOT = 'http://localhost:3001/'
+const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 
 class ProductCard extends React.Component {
