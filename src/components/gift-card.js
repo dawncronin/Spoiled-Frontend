@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { setUserGifts } from '../redux/user-actions'
 
+import "./gift-card.styles.css"
+
 const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
 class GiftCard extends React.Component {
@@ -50,15 +52,15 @@ class GiftCard extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="product-card">
+                <img className="product-card-img" src={this.state.product.image} alt="product"/>
                 <h3>{this.state.product.name}</h3>
-                <p>${this.state.product.price}0</p>
-                <p>{this.state.product.description}</p>
-                <img src={this.state.product.image} alt="product"/>
+                <p className="product-card-price">${this.state.product.price}0</p>
+                <p className="product-card-desc">{this.state.product.description}</p>
                 {this.props.purchased? 
-                    <p>This gift has been purchased</p>
+                    <div className="on-your-wishlist">This gift has been purchased</div>
                     :
-                    <a href={`/purchase/${this.props.gift_id}`}>Purchase Gift</a>
+                    <a className="btn purchase-gift" href={`/purchase/${this.props.gift_id}`}>Purchase Gift</a>
                 }
             </div>
         )

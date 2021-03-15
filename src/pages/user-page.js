@@ -37,8 +37,8 @@ class UserPage extends React.Component {
                 <div> loading </div>
 
                 :
-                <div>
-                    {this.state.user.first_name}'s page
+                <div className="product-list">
+                    <h2>Viewing {this.state.user.first_name}'s Wishlist </h2>
 
                     {this.state.wishlist.map(gift => {
                         return <GiftCard key= {gift._id} purchased={ gift.purchased} gift_id={gift._id} product_id={gift.product_id}/>

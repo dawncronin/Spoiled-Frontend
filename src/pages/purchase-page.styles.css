@@ -1,0 +1,36 @@
+.purchase-page {
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.purchase-page img {
+    width: 90%;
+    max-width: 800px;
+}
+
+.purchase-page h1{
+    font-size: 200%;
+    font-weight: 200;
+    letter-spacing: 3px;
+    margin-bottom: 0;
+}
+
+.purchase-page h3{
+    margin-top: 0px;
+    font-weight: 300;
+    color: rgb(187, 75, 93);
+}
+
+.purchase-page div {
+    padding: 10px 0 5px 0;
+    font-size: 200%;
+    font-weight: 200;
+}
+
+.purchase-page .test {
+    font-size: 80%;
+    padding: 0 0 10px 0;
+    font-weight: 300;
+}

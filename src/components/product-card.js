@@ -52,7 +52,7 @@ class ProductCard extends React.Component {
                 <h3>{this.props.product.name}</h3>
                 <p className="product-card-price">${this.props.product.price.toFixed(2)}</p>
                 <p className="product-card-desc">{this.props.product.description}</p>
-                {added? 'On Your Wishlist' :                 
+                {added? <div className="on-your-wishlist">On Your Wishlist</div> :                 
                   this.props.loggedIn? 
                     <CustomButton class="add-to-wishlist" text="Add to wishlist" handleClick={this.handleLoggedInClick}/> :
                     <CustomButton class="sign-in-to-add-to-wishlist" text="Sign in to add to wishlist" handleClick={this.handleLoggedOutClick} />

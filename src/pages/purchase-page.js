@@ -1,8 +1,9 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-
 import StripeCheckoutButton from '../components/stripe-button'
+
+import './purchase-page.styles.css'
 
 const API_ROOT = 'https://spoiled-backend.herokuapp.com/'
 
@@ -49,16 +50,18 @@ class PurchasePage extends React.Component {
     render() {
         return (
             <div>
+            <div className="purchase-page">
                 {this.state.purchased? <Redirect to="/"/>: ''}
                 <h1> Checkout </h1>
 
                 <h3>Purchasing {this.state.product.name} for {this.state.user.first_name}</h3>
                 <img src={this.state.product.image} alt="purchase"/>
 
-                <p> Total: ${this.state.product.price}0</p>
+                <div> Total: ${this.state.product.price}0</div>
 
-                <p>Use card number 4242 4242 4242 4242 and date 10/2022</p>
+                <div className="test">Use card number 4242 4242 4242 4242 and date 10/2022</div>
                 <StripeCheckoutButton price={this.state.product.price} onToken={this.onToken}/>
+            </div>
             </div>
         )
     }

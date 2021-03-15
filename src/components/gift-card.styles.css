@@ -1,0 +1,10 @@
+.purchase-gift {
+    display: inline-block;
+    font-size: 80%;
+    color: black;
+}
+
+.product-list h2 {
+    font-weight: 200;
+    font-size: 200%;
+}

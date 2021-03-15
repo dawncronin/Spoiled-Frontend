@@ -5,17 +5,18 @@
     background-color: white;
     padding: 10px;
     float: left;
+    text-align: center;
 
 }
 
 .my-wishlist {
-    width: 60%;
+    width: 40%;
+    margin: 20px auto;
     float: right;
-    margin: 0;
 }
 
 .profile-picture {
-    width: 100%;
+    width: 90%;
 }
 
 .edit {
