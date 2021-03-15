@@ -1,6 +1,6 @@
 # Spoiled
 
-Spoiled is a gift registry and e-commerce site created with react and express. I designed spoiled to be a portfolio site with integrate payment and login capabilities, but the product information is just generated using npm faker.js
+Spoiled is a gift registry and e-commerce site created with react and express. I designed spoiled to be a portfolio site with integrated payment and login capabilities, but the product information is just generated using npm faker.js
 
 ## Heroku Hosting
 
@@ -14,7 +14,7 @@ The front-end was created with 'create-react-app'. From there, I included react-
 
 ### Redux
 
-Spoiled has redux ingetrated for storing information about the current user that is logged. The redux store also includes the functions for making requests to the backend, in which the responses are saved to the global state. In order to speed up preformance on page reloads, the current-user information is saved the the local storage as well as the redux store.
+Spoiled has redux integrated for storing information about the current user that is logged. The redux store also includes the functions for making requests to the backend, in which the responses are saved to the global state. In order to speed up performance on page reloads, the current-user information is saved in the local storage as well as the redux store.
 
 ### Stripe Checkout
 
